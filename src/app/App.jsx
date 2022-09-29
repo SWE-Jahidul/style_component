@@ -24,6 +24,8 @@ const init = {
 
 const App = () => {
   const [state, setState] = useState({ ...init });
+
+  const [hasError ,setHasError ] = useState(false)
   const mapStateToValues = (state) => {
     return Object.keys(state).reduce((acc, cur) => {
       acc[cur] = state[cur].value;
@@ -34,7 +36,7 @@ const App = () => {
   const handleChange = (e) => {
     const { name:key, value } = e.target;
     const oldState = deepClone(state);
-    const values = mapStateToValues(oldState);
+    const values = mapStateToValues(oldState);  
     const { errors } = checkValidity(values);
     oldState[key].value = value;
     if (oldState[key].focus && errors[key]) {
@@ -42,20 +44,22 @@ const App = () => {
     } else {
       oldState[key].error = "";
     }
-
     setState(oldState);
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const {name:key} = e.target
     const values = mapStateToValues(state);
     const { isValid, errors } = checkValidity(values);
     if (isValid) {
-      console.log(values);
+      console.log(state);
     } else {
       const oldState = deepClone(state);
-      oldState[key].error= errors[key]
+      Object.keys(errors).forEach(key =>{
+        oldState[key].error = errors[key];
+      })
+      
+      setState(oldState)
     }
   };
 
@@ -69,16 +73,13 @@ const App = () => {
   const handleBlur = (e) => {
     const key = e.target.name;
     const values = mapStateToValues(state);
-
     const { errors } = checkValidity(values);
     const oldState = deepClone(state);
-
     if (oldState[key].focus && errors[key]) {
       oldState[key].error = errors[key];
     } else {
       oldState[key].error = "";
     }
-
     setState(oldState);
   };
 
@@ -141,7 +142,7 @@ const App = () => {
             onBlur={handleBlur}
           />
 
-          <Button type="submit">Submit </Button>
+          <Button disabled={hasError} type="submit">Submit </Button>
         </div>
       </form>
     </div>

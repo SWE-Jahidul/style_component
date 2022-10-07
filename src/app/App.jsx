@@ -14,17 +14,17 @@ const validate = (values) => {
   console.log("i am inside validate !!");
 
   if (!values.firstName) {
-    errors.firstName = "First Name is Required ";
+    errors.firstName = "First Name is Required ! ";
   }
   if (!values.LastName) {
-    errors.LastName = "Last Name is Required ";
+    errors.LastName = "Last Name is Required !";
   }
 
   if (!values.email) {
-    errors.email = "Email is Required ";
+    errors.email = "Email is Required !";
   }
   if (!values.password) {
-    errors.password = "Password is Required ";
+    errors.password = "Password is Required !";
   }
 
   return errors;

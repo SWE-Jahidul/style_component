@@ -113,7 +113,7 @@ const App = () => {
         >
           <InputGroup
             value={state.title.value}
-            lable="Title"
+            label="Title"
             name={"title"}
             placeholder={"Software Engineer"}
             onChange={handleChange}
@@ -123,7 +123,7 @@ const App = () => {
           />
           <InputGroup
             value={state.bio.value}
-            lable="Bio"
+            label="Bio"
             name={"bio"}
             placeholder={"I am a software engineer..."}
             onChange={handleChange}
@@ -133,7 +133,7 @@ const App = () => {
           />
           <InputGroup
             value={state.skills.value}
-            lable="Skills"
+            label="Skills"
             name={"skills"}
             placeholder={"JavaScript , React"}
             onChange={handleChange}

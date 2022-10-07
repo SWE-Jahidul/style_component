@@ -11,6 +11,8 @@ const init = {
 const validate = (values) => {
   const errors = {};
 
+  console.log("i am inside validate !!");
+
   if (!values.firstName) {
     errors.firstName = "First Name is Required ";
   }
@@ -52,9 +54,9 @@ const App = () => {
         >
           <InputGroup
             value={state.firstName.value}
-            lable="First Name"
+            label="First Name"
             name={"firstName"}
-            placeholder={"Jhon "}
+            placeholder={"Jhon"}
             error={state.firstName.error}
             onChange={handleChange}
             onFocus={handleFocus}
@@ -63,7 +65,7 @@ const App = () => {
 
           <InputGroup
             value={state.LastName.value}
-            lable="Last Name"
+            label="Last Name"
             name={"LastName"}
             placeholder={"deo "}
             error={state.LastName.error}
@@ -73,7 +75,7 @@ const App = () => {
           />
           <InputGroup
             value={state.email.value}
-            lable="Email"
+            label="Email"
             name={"email"}
             placeholder={"Email "}
             error={state.email.error}
@@ -84,7 +86,7 @@ const App = () => {
 
           <InputGroup
             value={state.password.value}
-            lable="Password"
+            label="Password"
             name={"password"}
             placeholder={"password "}
             error={state.password.error}

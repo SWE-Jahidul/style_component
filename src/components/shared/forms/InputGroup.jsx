@@ -16,7 +16,7 @@ const ErrorMessage = styled.div`
 `;
 
 export const InputGroup = ({
-  lable,
+  label,
   name,
   value,
   placeholder,
@@ -27,7 +27,7 @@ export const InputGroup = ({
 }) => {
   return (
     <Container>
-      <Label htmlFor={name}> {lable} </Label>
+      <Label htmlFor={name}> {label} </Label>
       <TextInput
         name={name}
         placeholder={placeholder ?? ""}

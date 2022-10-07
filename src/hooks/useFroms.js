@@ -19,7 +19,7 @@ const useFrom = ({ init, validate }) => {
     const oldState = deepClone(state);
     oldState[key].value = value;
 
-    const {  errors  } = getErrors()
+    const {  errors  } = getErrors();
 
     if (oldState[key].touched && errors[key]) {
       oldState[key].error = errors[key];
@@ -82,11 +82,15 @@ const useFrom = ({ init, validate }) => {
       errors = null;
     const values = mapStateToKeys(state, "values");
 
+    console.log(values);
+
+
     if (typeof validate === "boolean") {
       hasError === validate;
       const { errors } = validate(values);
     } else if (typeof validate === "funciton") {
-      const { errors: ErrorsFromCB } = validate(values);
+      const { ErrorsFromCB } = validate(values);
+      console.log(ErrorsFromCB);
       hasError = !isEmpty(ErrorsFromCB);
       errors = ErrorsFromCB;
     } else {
